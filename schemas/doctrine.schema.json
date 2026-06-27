@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/berlinguyinca/autospec-constitution/schemas/doctrine.schema.json",
+  "title": "Autospec Doctrine",
+  "description": "Lightweight starter schema for a Constitution doctrine.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "title",
+    "purpose",
+    "scope",
+    "rules",
+    "quality_gates",
+    "metadata",
+    "acceptance_criteria"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "purpose": {
+      "type": "string",
+      "default": ""
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "./rule.schema.json"
+      },
+      "default": []
+    },
+    "quality_gates": {
+      "type": "array",
+      "items": {
+        "$ref": "./quality-gate.schema.json"
+      },
+      "default": []
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "implementation_hints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "anti_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "examples": [
+    {
+      "id": "",
+      "title": "",
+      "purpose": "",
+      "scope": [],
+      "rules": [],
+      "quality_gates": [],
+      "metadata": [],
+      "acceptance_criteria": []
+    }
+  ]
+}
