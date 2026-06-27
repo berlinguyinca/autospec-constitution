@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/berlinguyinca/autospec-constitution/schemas/profile.schema.json",
+  "title": "Autospec Profile",
+  "description": "Lightweight starter schema for future baseline and profile composition.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "title",
+    "constitution_version",
+    "doctrines"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "constitution_version": {
+      "type": "string"
+    },
+    "extends": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "doctrines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "quality_gates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "metadata_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "maturity_target": {
+      "type": "string",
+      "enum": [
+        "prototype",
+        "production",
+        "enterprise",
+        "autonomous"
+      ]
+    }
+  }
+}

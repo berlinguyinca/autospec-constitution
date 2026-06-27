@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/berlinguyinca/autospec-constitution/schemas/constitution.schema.json",
+  "title": "Autospec Constitution",
+  "description": "Lightweight starter schema for a versioned Autospec Constitution manifest.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "name",
+    "version",
+    "doctrines",
+    "profiles_supported",
+    "maturity_levels"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "default": "Autospec Constitution"
+    },
+    "version": {
+      "type": "string",
+      "default": "0.1.0"
+    },
+    "doctrines": {
+      "type": "array",
+      "items": {
+        "$ref": "./doctrine.schema.json"
+      },
+      "default": []
+    },
+    "profiles_supported": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "maturity_levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "level",
+          "name"
+        ],
+        "properties": {
+          "level": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    }
+  },
+  "examples": [
+    {
+      "name": "Autospec Constitution",
+      "version": "0.1.0",
+      "doctrines": [],
+      "profiles_supported": [],
+      "maturity_levels": []
+    }
+  ]
+}
