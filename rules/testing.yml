@@ -1,0 +1,74 @@
+schema: 1
+doctrine: testing
+_defaults: &defaults
+  source: {doctrine: testing, document: docs/05-testing-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [test-coverage-map]
+  quality_gates: [validation evidence is recorded]
+  remediation: {hint: Add the missing test or validation artifact., suggested_issue_title: "test: add required validation evidence", suggested_labels: [autospec:testing]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: testing.unit.required_for_logic
+    rule_id: testing.unit.required_for_logic
+    title: Unit tests cover logic
+    summary: Deterministic logic needs focused tests at the lowest useful level.
+    category: testing
+    severity: required
+    check: {type: required_test, expected: {keywords: [unit, test]}}
+    evidence_required: [unit test files or test coverage map]
+    acceptance_criteria: [Logic changes can be validated with focused tests.]
+  - <<: *defaults
+    id: testing.integration.required_for_boundaries
+    rule_id: testing.integration.required_for_boundaries
+    title: Integration tests cover boundaries
+    summary: Cross-module, persistence, service, and external boundaries need integration evidence.
+    category: testing
+    severity: required
+    check: {type: required_test, expected: {keywords: [integration, boundary]}}
+    evidence_required: [integration tests or documented equivalent]
+    acceptance_criteria: [Boundary behavior has executable or documented evidence.]
+  - <<: *defaults
+    id: testing.playwright.required_for_web
+    rule_id: testing.playwright.required_for_web
+    title: Playwright browser workflow testing
+    summary: Web applications should use Playwright for browser-level workflows unless waived.
+    category: testing
+    severity: required
+    applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+    check: {type: required_tool, expected: {name: playwright}}
+    evidence_required: [Playwright dependency, config, or tests]
+    acceptance_criteria: [At least one critical browser workflow can run through Playwright.]
+  - <<: *defaults
+    id: testing.accessibility.required_for_ui
+    rule_id: testing.accessibility.required_for_ui
+    title: Accessibility checks cover UI
+    summary: User-facing UI requires accessibility evidence for representative workflows.
+    category: accessibility
+    severity: required
+    applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+    check: {type: required_test, expected: {keywords: [accessibility, a11y, axe]}}
+    evidence_required: [accessibility test or report]
+    acceptance_criteria: [Representative UI has accessibility validation evidence.]
+  - <<: *defaults
+    id: testing.visual_regression.recommended_for_ui
+    rule_id: testing.visual_regression.recommended_for_ui
+    title: Visual regression coverage is recommended for UI
+    summary: Important visual surfaces should have screenshot or visual-diff evidence.
+    category: testing
+    severity: recommended
+    applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+    check: {type: required_test, expected: {keywords: [screenshot, visual, snapshot]}}
+    evidence_required: [screenshot or visual regression artifact]
+    acceptance_criteria: [At least one important UI state has visual evidence.]
+  - <<: *defaults
+    id: testing.validation_evidence.required_for_pr
+    rule_id: testing.validation_evidence.required_for_pr
+    title: PRs include validation evidence
+    summary: Every implementation PR must document the commands and artifacts used to validate it.
+    category: testing
+    severity: required
+    check: {type: required_doc, expected: {keywords: [Validation, Tested, evidence]}}
+    evidence_required: [PR body or local report validation evidence]
+    acceptance_criteria: [Reviewers can rerun or inspect the validation evidence.]

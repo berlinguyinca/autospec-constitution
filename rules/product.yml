@@ -1,0 +1,51 @@
+schema: 1
+doctrine: product
+_defaults: &defaults
+  source: {doctrine: product, document: docs/01-product-doctrine.md, section: Rules}
+  maturity: {level: prototype}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [product-purpose]
+  quality_gates: [product intent is explicit]
+  remediation: {hint: Document the missing product decision in durable repo docs., suggested_issue_title: "docs: define product intent", suggested_labels: [autospec:product]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: product.mission.required
+    rule_id: product.mission.required
+    title: Product mission is documented
+    summary: Every repository must state what product outcome it serves.
+    category: product
+    severity: required
+    check: {type: required_doc, expected: {paths: [README.md, VISION.md], keywords: [mission, purpose]}}
+    evidence_required: [README or VISION mission statement]
+    acceptance_criteria: [A reviewer can find the product mission in repo docs.]
+  - <<: *defaults
+    id: product.personas.required
+    rule_id: product.personas.required
+    title: Product personas are documented
+    summary: User or operator personas must be explicit enough to guide baseline choices.
+    category: product
+    severity: required
+    check: {type: required_metadata, expected: {metadata: product-purpose, keywords: [persona, user, operator]}}
+    evidence_required: [persona or audience description]
+    acceptance_criteria: [Primary users or operators are named.]
+  - <<: *defaults
+    id: product.success_metrics.required
+    rule_id: product.success_metrics.required
+    title: Success metrics are documented
+    summary: Product success must be measurable, even for early repositories.
+    category: product
+    severity: required
+    check: {type: required_doc, expected: {keywords: [success, metric, measure]}}
+    evidence_required: [success metric documentation]
+    acceptance_criteria: [At least one success measure is documented.]
+  - <<: *defaults
+    id: product.non_goals.required
+    rule_id: product.non_goals.required
+    title: Non-goals are documented
+    summary: Repositories must name meaningful boundaries so agents do not expand scope.
+    category: product
+    severity: required
+    check: {type: required_doc, expected: {keywords: [non-goal, non-goals, out of scope]}}
+    evidence_required: [non-goals section]
+    acceptance_criteria: [Out-of-scope behavior is visible to reviewers and agents.]

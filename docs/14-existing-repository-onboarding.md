@@ -1,5 +1,11 @@
 # 14. Existing Repository Onboarding Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/repository-onboarding.yml`
+
 ## Purpose
 
 Autospec should onboard established repositories by understanding them first, using evidence and

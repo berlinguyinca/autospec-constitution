@@ -1,5 +1,11 @@
 # 13. Metadata And Digital Twin Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/metadata-digital-twin.yml`
+
 ## Purpose
 
 Repositories should maintain metadata that forms a practical digital twin of the product,

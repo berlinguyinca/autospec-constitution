@@ -1,0 +1,105 @@
+schema: 1
+doctrine: ai-platform
+_defaults: &defaults
+  source: {doctrine: ai-platform, document: docs/07-ai-platform-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [ai_enabled]}
+  metadata_required: [ai-capabilities]
+  quality_gates: [AI behavior is configurable and observable]
+  remediation: {hint: Add AI platform metadata, settings, and usage evidence., suggested_issue_title: "feat: add AI platform governance", suggested_labels: [autospec:ai]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: ai.provider_abstraction.required
+    rule_id: ai.provider_abstraction.required
+    title: AI provider abstraction is required
+    summary: AI-enabled systems must isolate provider-specific configuration and calls.
+    category: ai
+    severity: required
+    check: {type: required_ai_capability, expected: {id: provider-abstraction}}
+    evidence_required: [AI capability registry provider abstraction]
+    acceptance_criteria: [Provider choice can be changed without rewriting product flows.]
+  - <<: *defaults
+    id: ai.openai_compatible.required_when_ai_enabled
+    rule_id: ai.openai_compatible.required_when_ai_enabled
+    title: OpenAI-compatible provider support is required when AI is enabled
+    summary: AI-enabled apps should support an OpenAI-compatible endpoint contract unless waived.
+    category: ai
+    severity: required
+    check: {type: required_ai_capability, expected: {id: openai-compatible-provider}}
+    evidence_required: [base URL/model/API key secret-reference settings]
+    acceptance_criteria: [OpenAI-compatible endpoint configuration is documented.]
+  - <<: *defaults
+    id: ai.ollama.recommended_when_local_ai_needed
+    rule_id: ai.ollama.recommended_when_local_ai_needed
+    title: Ollama is recommended for local AI needs
+    summary: Local or private AI workflows should document Ollama-compatible behavior where useful.
+    category: ai
+    severity: recommended
+    check: {type: required_ai_capability, expected: {id: ollama-provider}}
+    evidence_required: [local provider documentation or setting]
+    acceptance_criteria: [Local AI option is documented when needed.]
+  - <<: *defaults
+    id: ai.rag.required_for_documented_apps
+    rule_id: ai.rag.required_for_documented_apps
+    title: RAG is required for documented AI apps
+    summary: AI assistants that answer about the app should retrieve from repository/user docs.
+    category: rag
+    severity: required
+    check: {type: required_ai_capability, expected: {id: rag}}
+    evidence_required: [RAG pipeline or retrieval docs]
+    acceptance_criteria: [Assistant answers can cite or ground against source docs.]
+  - <<: *defaults
+    id: ai.settings.required
+    rule_id: ai.settings.required
+    title: AI settings are required
+    summary: AI behavior, providers, models, and safety limits must be configurable.
+    category: ai
+    severity: required
+    check: {type: required_setting, expected: {keywords: [ai, model, provider]}}
+    evidence_required: [AI settings metadata or UI]
+    acceptance_criteria: [Operators can inspect or configure AI provider settings.]
+  - <<: *defaults
+    id: ai.token_usage.required_for_multi_user
+    rule_id: ai.token_usage.required_for_multi_user
+    title: Token usage tracking is required for multi-user AI
+    summary: Multi-user AI systems must track usage enough to diagnose cost and abuse.
+    category: ai
+    severity: required
+    applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [ai_enabled, multi_user]}
+    check: {type: required_ai_capability, expected: {id: token-usage-tracking}}
+    evidence_required: [usage tracking metadata]
+    acceptance_criteria: [Token usage can be inspected per relevant actor or workflow.]
+  - <<: *defaults
+    id: ai.cost_tracking.required_for_multi_user
+    rule_id: ai.cost_tracking.required_for_multi_user
+    title: Cost tracking is required for multi-user AI
+    summary: Multi-user AI products need visible cost or budget tracking.
+    category: ai
+    severity: required
+    applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [ai_enabled, multi_user]}
+    check: {type: required_ai_capability, expected: {id: cost-tracking}}
+    evidence_required: [cost dashboard or report]
+    acceptance_criteria: [Operators can identify AI cost trends.]
+  - <<: *defaults
+    id: ai.memory.required_for_agents
+    rule_id: ai.memory.required_for_agents
+    title: Agent memory model is required
+    summary: Agentic systems must define what memory exists and how it is scoped.
+    category: ai
+    severity: required
+    applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [agents_enabled]}
+    check: {type: required_ai_capability, expected: {id: memory-model}}
+    evidence_required: [memory model docs or metadata]
+    acceptance_criteria: [Agent memory boundaries are documented.]
+  - <<: *defaults
+    id: ai.tools.required_for_agents
+    rule_id: ai.tools.required_for_agents
+    title: Agent tools are registered
+    summary: Agentic systems must enumerate tools, side effects, and approval posture.
+    category: ai
+    severity: required
+    applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [agents_enabled]}
+    check: {type: required_ai_capability, expected: {id: tool-registry}}
+    evidence_required: [tool registry metadata]
+    acceptance_criteria: [Agent tools and mutation posture are discoverable.]

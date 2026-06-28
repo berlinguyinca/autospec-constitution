@@ -1,0 +1,63 @@
+schema: 1
+doctrine: documentation
+_defaults: &defaults
+  source: {doctrine: documentation, document: docs/09-documentation-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [docs-coverage-map]
+  quality_gates: [docs are discoverable and current]
+  remediation: {hint: Add or refresh human-readable documentation with source evidence., suggested_issue_title: "docs: fill documentation baseline gap", suggested_labels: [autospec:documentation]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: docs.readme.required
+    rule_id: docs.readme.required
+    title: README is required
+    summary: Every repository must include a README that orients humans and agents.
+    category: documentation
+    severity: required
+    check: {type: required_file, expected: {paths: [README.md]}}
+    evidence_required: [README.md]
+    acceptance_criteria: [README explains purpose and basic usage.]
+  - <<: *defaults
+    id: docs.in_app_docs.required_for_web_apps
+    rule_id: docs.in_app_docs.required_for_web_apps
+    title: In-app docs are required for web apps
+    summary: Web applications should expose user-facing documentation or help where users work.
+    category: documentation
+    severity: required
+    applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+    check: {type: required_capability, expected: {id: in-app-documentation}}
+    evidence_required: [route, UI surface, or capability for docs/help]
+    acceptance_criteria: [Users can navigate to documentation inside the app.]
+  - <<: *defaults
+    id: docs.rag_ready.required_when_ai_enabled
+    rule_id: docs.rag_ready.required_when_ai_enabled
+    title: Docs are RAG-ready when AI is enabled
+    summary: AI-enabled products need docs structured enough for retrieval and citation.
+    category: rag
+    severity: required
+    applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [ai_enabled]}
+    check: {type: required_doc, expected: {keywords: [heading, citation, source]}}
+    evidence_required: [docs corpus or RAG metadata]
+    acceptance_criteria: [Documentation can be chunked and cited by AI workflows.]
+  - <<: *defaults
+    id: docs.tutorials.required_for_user_workflows
+    rule_id: docs.tutorials.required_for_user_workflows
+    title: Tutorials cover user workflows
+    summary: Critical user workflows need tutorial or guide documentation.
+    category: tutorials
+    severity: required
+    check: {type: required_tutorial, expected: {keywords: [tutorial, guide, workflow]}}
+    evidence_required: [tutorial docs]
+    acceptance_criteria: [A new user can follow at least one critical workflow guide.]
+  - <<: *defaults
+    id: docs.pdf_guides.recommended
+    rule_id: docs.pdf_guides.recommended
+    title: PDF guides are recommended when useful
+    summary: Products with offline or formal reporting needs should provide exportable guides.
+    category: documentation
+    severity: recommended
+    check: {type: required_report, expected: {keywords: [PDF, guide]}}
+    evidence_required: [PDF guide or export path]
+    acceptance_criteria: [PDF guide availability is documented or explicitly unnecessary.]

@@ -1,5 +1,11 @@
 # 05. Testing Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/testing.yml`
+
 ## Purpose
 
 Tests should prove behavior at the right level and provide confidence for autonomous and human

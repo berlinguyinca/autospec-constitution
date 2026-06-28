@@ -1,0 +1,42 @@
+schema: 1
+levels:
+  prototype:
+    purpose: Prove the product direction with explicit known gaps.
+    required_posture: Clear mission, minimal validation, and visible evidence/confidence.
+    expected_rule_categories: [product, documentation, metadata, testing]
+    graduation_criteria:
+      - Mission, personas, and non-goals are documented.
+      - Basic repository metadata exists.
+      - Critical logic has at least focused validation.
+    examples:
+      - A private prototype with docs and focused tests.
+  production:
+    purpose: Operate a user-facing product safely and repeatably.
+    required_posture: Critical workflows, documentation, testing, diagnostics, and security posture are explicit.
+    expected_rule_categories: [product, architecture, engineering, testing, documentation, security, operations, metadata]
+    graduation_criteria:
+      - Critical workflows have executable evidence.
+      - User-visible surfaces are documented.
+      - Operational diagnostics and validation evidence are available.
+    examples:
+      - A web application with Playwright coverage and health diagnostics.
+  enterprise:
+    purpose: Support organizational governance, auditability, and multi-team operation.
+    required_posture: Governance, permissions, privacy, observability, and review gates are durable.
+    expected_rule_categories: [governance, security, privacy, operations, diagnostics, metadata]
+    graduation_criteria:
+      - Permission and audit models are documented.
+      - Retention/export obligations are addressed.
+      - Architecture decisions are traceable.
+    examples:
+      - A multi-user internal platform with RBAC and audit logs.
+  autonomous:
+    purpose: Enable bounded autonomous repository improvement.
+    required_posture: Digital Twin, Knowledge Graph, rule checks, stuck guidance, and bounded loops exist.
+    expected_rule_categories: [metadata, digital_twin, governance, testing, operations]
+    graduation_criteria:
+      - Rule checks evaluate against repository intelligence.
+      - Automation is bounded, observable, and operator-controlled.
+      - Stuck states request exact human guidance.
+    examples:
+      - An Autospec-managed repo with verifier and promotion gates.

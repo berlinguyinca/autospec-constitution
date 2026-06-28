@@ -1,0 +1,28 @@
+schema: 1
+categories:
+  - product
+  - domain
+  - architecture
+  - engineering
+  - testing
+  - ui
+  - ux
+  - accessibility
+  - ai
+  - rag
+  - mcp
+  - nlai
+  - documentation
+  - tutorials
+  - reporting
+  - analytics
+  - visualization
+  - security
+  - privacy
+  - operations
+  - diagnostics
+  - metadata
+  - digital_twin
+  - onboarding
+  - modernization
+  - governance

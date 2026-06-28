@@ -1,0 +1,63 @@
+schema: 1
+doctrine: operations-diagnostics
+_defaults: &defaults
+  source: {doctrine: operations-diagnostics, document: docs/12-operations-diagnostics-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [repository-inventory]
+  quality_gates: [operators can diagnose failures]
+  remediation: {hint: Add operational diagnostics and failure evidence., suggested_issue_title: "feat: add operational diagnostics", suggested_labels: [autospec:operations]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: operations.health_checks.required_for_services
+    rule_id: operations.health_checks.required_for_services
+    title: Health checks are required for services
+    summary: Long-running services need lightweight health or readiness diagnostics.
+    category: operations
+    severity: required
+    applies_when: {application_types: [service, web], profiles: [], technologies: [], repo_conditions: [service]}
+    check: {type: required_capability, expected: {id: health-check}}
+    evidence_required: [health check route, command, or docs]
+    acceptance_criteria: [Operators can tell whether the service is healthy.]
+  - <<: *defaults
+    id: diagnostics.white_screen.required_for_web
+    rule_id: diagnostics.white_screen.required_for_web
+    title: White-screen diagnostics are required for web apps
+    summary: Web apps need diagnostics for blank-page or boot failures.
+    category: diagnostics
+    severity: required
+    applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+    check: {type: required_capability, expected: {id: white-screen-diagnostics}}
+    evidence_required: [diagnostic route, error boundary, or Playwright check]
+    acceptance_criteria: [Blank-screen failure modes produce actionable evidence.]
+  - <<: *defaults
+    id: diagnostics.logs.required
+    rule_id: diagnostics.logs.required
+    title: Logs are required
+    summary: Systems must emit enough logs to diagnose important failures without exposing secrets.
+    category: diagnostics
+    severity: required
+    check: {type: required_capability, expected: {id: logging}}
+    evidence_required: [logging capability or docs]
+    acceptance_criteria: [Important failures are logged with safe context.]
+  - <<: *defaults
+    id: diagnostics.incident_report.required
+    rule_id: diagnostics.incident_report.required
+    title: Incident report path is required
+    summary: Production systems need an incident-reporting template or process.
+    category: diagnostics
+    severity: required
+    check: {type: required_doc, expected: {keywords: [incident, postmortem, report]}}
+    evidence_required: [incident report template or runbook]
+    acceptance_criteria: [Operators know how to record incidents.]
+  - <<: *defaults
+    id: diagnostics.mcp_tools.recommended
+    rule_id: diagnostics.mcp_tools.recommended
+    title: MCP diagnostic tools are recommended
+    summary: Autospec-managed systems should expose safe diagnostic tools through MCP where useful.
+    category: mcp
+    severity: recommended
+    check: {type: required_mcp_capability, expected: {id: diagnostics}}
+    evidence_required: [MCP registry diagnostics entry]
+    acceptance_criteria: [Read-only diagnostic tools are registered or explicitly unnecessary.]

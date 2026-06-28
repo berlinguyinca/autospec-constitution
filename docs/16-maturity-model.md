@@ -1,5 +1,11 @@
 # 16. Maturity Model
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/maturity-model.yml`
+
 ## Purpose
 
 The maturity model helps repositories declare their target quality posture and lets agents apply

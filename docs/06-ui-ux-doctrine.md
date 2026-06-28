@@ -1,5 +1,11 @@
 # 06. UI/UX Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/ui-ux.yml`
+
 ## Purpose
 
 User interfaces should be usable, accessible, responsive, visually coherent, and aligned with

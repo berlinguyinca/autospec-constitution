@@ -1,0 +1,61 @@
+schema: 1
+doctrine: continuous-evolution
+_defaults: &defaults
+  source: {doctrine: continuous-evolution, document: docs/15-continuous-evolution-doctrine.md, section: Rules}
+  maturity: {level: autonomous}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: [autospec_managed]}
+  metadata_required: [rule-check-results, issue-plan]
+  quality_gates: [autonomy is bounded and observable]
+  remediation: {hint: Add bounded evolution reports, issue plans, and stuck guidance., suggested_issue_title: "chore: add continuous-evolution control evidence", suggested_labels: [autospec:self-improvement]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: evolution.gap_analysis.required
+    rule_id: evolution.gap_analysis.required
+    title: Gap analysis is required
+    summary: Autospec-managed repositories must produce gap reports before backlog generation.
+    category: governance
+    severity: required
+    check: {type: required_report, expected: {paths: [.autospec/reports/constitutional-gap-report-v1.md]}}
+    evidence_required: [gap report]
+    acceptance_criteria: [Gap analysis is available before issue planning.]
+  - <<: *defaults
+    id: evolution.issue_generation.required
+    rule_id: evolution.issue_generation.required
+    title: Issue generation is required
+    summary: Gap findings should be converted into reviewable issue drafts before publication.
+    category: governance
+    severity: required
+    check: {type: required_report, expected: {paths: [.autospec/reports/issue-plan-v2.md]}}
+    evidence_required: [issue plan v2]
+    acceptance_criteria: [Issue drafts trace back to rules or gaps.]
+  - <<: *defaults
+    id: evolution.small_prs.required
+    rule_id: evolution.small_prs.required
+    title: Evolution happens through small PRs
+    summary: Autonomous improvement must remain bounded and reviewable.
+    category: governance
+    severity: required
+    check: {type: required_doc, expected: {keywords: [small PR, bounded, patch budget]}}
+    evidence_required: [worker or runbook budget evidence]
+    acceptance_criteria: [Patch budgets or small-PR rules are documented.]
+  - <<: *defaults
+    id: evolution.no_unbounded_loops.required
+    rule_id: evolution.no_unbounded_loops.required
+    title: Unbounded loops are forbidden
+    summary: Autonomous loops must have explicit cycle, budget, and stop controls.
+    category: governance
+    severity: required
+    check: {type: required_setting, expected: {keywords: [max_cycles, budget, stop]}}
+    evidence_required: [supervisor loop/budget settings]
+    acceptance_criteria: [Loop limits and stop controls are documented.]
+  - <<: *defaults
+    id: evolution.stuck_guidance.required
+    rule_id: evolution.stuck_guidance.required
+    title: Stuck guidance is required
+    summary: Agents must stop and ask for exact guidance when work is unsafe or ambiguous.
+    category: governance
+    severity: required
+    check: {type: required_capability, expected: {id: stuck-guidance}}
+    evidence_required: [stuck template or handoff flow]
+    acceptance_criteria: [Stuck state includes exact guidance needed and resume criteria.]

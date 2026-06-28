@@ -1,5 +1,11 @@
 # 01. Product Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/product.yml`
+
 ## Purpose
 
 Product work must connect every feature, workflow, and improvement to the product mission and

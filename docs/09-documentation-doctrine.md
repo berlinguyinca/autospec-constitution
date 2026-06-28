@@ -1,5 +1,11 @@
 # 09. Documentation Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/documentation.yml`
+
 ## Purpose
 
 Documentation should make product behavior, system structure, operations, and user workflows

@@ -1,0 +1,51 @@
+schema: 1
+doctrine: architecture
+_defaults: &defaults
+  source: {doctrine: architecture, document: docs/03-architecture-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [repository-inventory, knowledge-graph]
+  quality_gates: [architecture decisions are traceable]
+  remediation: {hint: Add lightweight architecture documentation or metadata evidence., suggested_issue_title: "docs: add architecture decision evidence", suggested_labels: [autospec:architecture]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: true}
+rules:
+  - <<: *defaults
+    id: architecture.adr.required_for_major_decisions
+    rule_id: architecture.adr.required_for_major_decisions
+    title: ADRs exist for major decisions
+    summary: Major architecture choices require durable decision records.
+    category: architecture
+    severity: required
+    check: {type: required_doc, expected: {paths: [docs/adr, docs/architecture], keywords: [decision, ADR]}}
+    evidence_required: [ADR or architecture decision doc]
+    acceptance_criteria: [A major decision can be traced to rationale.]
+  - <<: *defaults
+    id: architecture.digital_diagrams.recommended
+    rule_id: architecture.digital_diagrams.recommended
+    title: Digital diagrams are recommended
+    summary: Architecture diagrams should be stored as versionable source or generated artifacts.
+    category: architecture
+    severity: recommended
+    check: {type: required_doc, expected: {keywords: [diagram, architecture]}}
+    evidence_required: [diagram source or generated report]
+    acceptance_criteria: [At least one architecture view is available.]
+  - <<: *defaults
+    id: architecture.business_logic_not_ui_only.required
+    rule_id: architecture.business_logic_not_ui_only.required
+    title: Business logic is not UI-only
+    summary: Business rules must be testable outside decorative or incidental UI code.
+    category: architecture
+    severity: required
+    check: {type: required_test, expected: {keywords: [logic, service, domain]}}
+    evidence_required: [tests or metadata showing non-UI logic coverage]
+    acceptance_criteria: [Business behavior can be validated without relying only on visual inspection.]
+  - <<: *defaults
+    id: architecture.impact_analysis.required_for_risky_changes
+    rule_id: architecture.impact_analysis.required_for_risky_changes
+    title: Impact analysis is required for risky changes
+    summary: Risky work must identify affected files, capabilities, docs, and tests.
+    category: architecture
+    severity: required
+    check: {type: required_report, expected: {paths: [.autospec/reports/impact-analysis.md]}}
+    evidence_required: [impact analysis report]
+    acceptance_criteria: [Risky changes include an impact-analysis artifact.]

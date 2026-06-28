@@ -1,0 +1,65 @@
+schema: 1
+doctrine: security-privacy
+_defaults: &defaults
+  source: {doctrine: security-privacy, document: docs/11-security-privacy-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [permission-model, settings-registry]
+  quality_gates: [security and privacy posture is explicit]
+  remediation: {hint: Add security/privacy posture docs and metadata without exposing secret values., suggested_issue_title: "docs: document security and privacy posture", suggested_labels: [autospec:security]}
+  risk: {level: high, requires_human_review: true, requires_architecture_review: true}
+rules:
+  - <<: *defaults
+    id: security.threat_model.required_for_production
+    rule_id: security.threat_model.required_for_production
+    title: Threat model is required for production
+    summary: Production systems must document meaningful threat assumptions and mitigations.
+    category: security
+    severity: required
+    maturity: {level: production}
+    check: {type: required_doc, expected: {keywords: [threat, risk, mitigation]}}
+    evidence_required: [threat model or security review]
+    acceptance_criteria: [Threats and mitigations are traceable.]
+  - <<: *defaults
+    id: security.secret_references.required
+    rule_id: security.secret_references.required
+    title: Secrets are references only
+    summary: Configuration should expose secret names or references, never secret values.
+    category: security
+    severity: required
+    check: {type: required_setting, expected: {keywords: [secret, token, key]}}
+    evidence_required: [settings registry showing secret references only]
+    acceptance_criteria: [Secret values are not stored in docs or metadata.]
+  - <<: *defaults
+    id: security.rbac_or_permission_model.required_when_multi_user
+    rule_id: security.rbac_or_permission_model.required_when_multi_user
+    title: Permission model is required for multi-user systems
+    summary: Multi-user products need RBAC, ACL, ABAC, or equivalent authorization documentation.
+    category: security
+    severity: required
+    applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: [multi_user]}
+    check: {type: required_metadata, expected: {metadata: permission-model}}
+    evidence_required: [permission model metadata]
+    acceptance_criteria: [Roles, permissions, or policy boundaries are documented.]
+  - <<: *defaults
+    id: privacy.pii_detection.recommended
+    rule_id: privacy.pii_detection.recommended
+    title: PII detection is recommended
+    summary: Repositories handling user data should document PII inventory and detection posture.
+    category: privacy
+    severity: recommended
+    applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: [user_data]}
+    check: {type: required_doc, expected: {keywords: [PII, personal data]}}
+    evidence_required: [PII inventory]
+    acceptance_criteria: [Personal-data handling is visible.]
+  - <<: *defaults
+    id: privacy.retention_policy.required_when_user_data
+    rule_id: privacy.retention_policy.required_when_user_data
+    title: Retention policy is required for user data
+    summary: User data systems must document retention and deletion posture.
+    category: privacy
+    severity: required
+    applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: [user_data]}
+    check: {type: required_doc, expected: {keywords: [retention, deletion]}}
+    evidence_required: [retention/deletion policy]
+    acceptance_criteria: [User-data retention behavior is documented.]

@@ -1,5 +1,11 @@
 # 07. AI Platform Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/ai-platform.yml`
+
 ## Purpose
 
 AI must be a reusable, governed platform capability rather than a one-off chatbot or hidden

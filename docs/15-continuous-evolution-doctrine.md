@@ -1,5 +1,11 @@
 # 15. Continuous Evolution Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/continuous-evolution.yml`
+
 ## Purpose
 
 Autospec should continuously discover improvement opportunities, score them, file issues, and

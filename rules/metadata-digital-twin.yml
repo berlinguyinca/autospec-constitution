@@ -1,0 +1,74 @@
+schema: 1
+doctrine: metadata-digital-twin
+_defaults: &defaults
+  source: {doctrine: metadata-digital-twin, document: docs/13-metadata-digital-twin-doctrine.md, section: Rules}
+  maturity: {level: autonomous}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [digital-twin]
+  quality_gates: [repository intelligence has evidence and confidence]
+  remediation: {hint: Build or refresh the Digital Twin metadata files., suggested_issue_title: "chore: refresh repository intelligence metadata", suggested_labels: [autospec:metadata]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: metadata.product_purpose.required
+    rule_id: metadata.product_purpose.required
+    title: Product purpose metadata is required
+    summary: Repository intelligence must capture the product purpose with evidence.
+    category: metadata
+    severity: required
+    maturity: {level: prototype}
+    check: {type: required_metadata, expected: {metadata: product-purpose}}
+    evidence_required: [.autospec/state/product-purpose.md]
+    acceptance_criteria: [Product purpose metadata exists.]
+  - <<: *defaults
+    id: metadata.technology_registry.required
+    rule_id: metadata.technology_registry.required
+    title: Technology registry is required
+    summary: Repositories need an evidence-scored registry of languages, tools, and frameworks.
+    category: metadata
+    severity: required
+    maturity: {level: production}
+    check: {type: required_metadata, expected: {metadata: technology-registry}}
+    evidence_required: [.autospec/state/technology-registry.yml]
+    acceptance_criteria: [Technology registry exists with evidence.]
+  - <<: *defaults
+    id: metadata.capability_registry.required
+    rule_id: metadata.capability_registry.required
+    title: Capability registry is required
+    summary: Repositories need an inventory of detected user, API, CLI, workflow, docs, and report capabilities.
+    category: metadata
+    severity: required
+    maturity: {level: production}
+    check: {type: required_metadata, expected: {metadata: capability-registry}}
+    evidence_required: [.autospec/state/capability-registry.json]
+    acceptance_criteria: [Capability registry exists with evidence.]
+  - <<: *defaults
+    id: metadata.knowledge_graph.required
+    rule_id: metadata.knowledge_graph.required
+    title: Knowledge Graph is required for autonomous maturity
+    summary: Autonomous workflows need a compact graph of files, docs, tests, capabilities, and reports.
+    category: digital_twin
+    severity: required
+    check: {type: required_metadata, expected: {metadata: knowledge-graph}}
+    evidence_required: [.autospec/state/knowledge-graph.json]
+    acceptance_criteria: [Knowledge Graph metadata exists.]
+  - <<: *defaults
+    id: metadata.digital_twin.required
+    rule_id: metadata.digital_twin.required
+    title: Digital Twin summary is required
+    summary: Repositories need a single summary that references the major metadata surfaces.
+    category: digital_twin
+    severity: required
+    check: {type: required_metadata, expected: {metadata: digital-twin}}
+    evidence_required: [.autospec/state/digital-twin.json]
+    acceptance_criteria: [Digital Twin summary references core metadata files.]
+  - <<: *defaults
+    id: metadata.drift_detection.required
+    rule_id: metadata.drift_detection.required
+    title: Metadata drift detection is required
+    summary: Generated metadata should be checked for stale references and orphaned docs/tests.
+    category: metadata
+    severity: required
+    check: {type: required_report, expected: {paths: [.autospec/reports/metadata-drift.md]}}
+    evidence_required: [metadata drift report]
+    acceptance_criteria: [Metadata drift findings are available.]

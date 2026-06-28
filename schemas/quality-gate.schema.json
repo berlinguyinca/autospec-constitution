@@ -2,42 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/berlinguyinca/autospec-constitution/schemas/quality-gate.schema.json",
   "title": "Autospec Quality Gate",
-  "description": "Lightweight starter schema for quality gates used by doctrines and profiles.",
+  "description": "A review or validation gate referenced by structured rules.",
   "type": "object",
   "additionalProperties": true,
-  "required": [
-    "name",
-    "purpose",
-    "required_evidence",
-    "pass_fail_criteria"
-  ],
+  "required": ["id", "title", "summary", "evidence_required"],
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "purpose": {
-      "type": "string"
-    },
-    "required_evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "default": []
-    },
-    "pass_fail_criteria": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "default": []
-    },
-    "applies_to_profiles": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "default": []
-    }
+    "id": {"type": "string"},
+    "title": {"type": "string"},
+    "summary": {"type": "string"},
+    "evidence_required": {"type": "array", "items": {"type": "string"}},
+    "applies_to": {"type": "array", "items": {"type": "string"}},
+    "blocking": {"type": "boolean"}
   }
 }
