@@ -1,5 +1,11 @@
 # 03. Architecture Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/architecture.yml`
+
 ## Purpose
 
 Architecture should make system boundaries, dependencies, integrations, deployment shape, and

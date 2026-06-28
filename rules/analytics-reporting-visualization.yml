@@ -1,0 +1,52 @@
+schema: 1
+doctrine: analytics-reporting-visualization
+_defaults: &defaults
+  source: {doctrine: analytics-reporting-visualization, document: docs/10-analytics-reporting-visualization.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [analytics, data], profiles: [analytics], technologies: [], repo_conditions: []}
+  metadata_required: [capability-registry, data-surface]
+  quality_gates: [metrics and visualizations have purpose]
+  remediation: {hint: Add analytics/reporting metadata and standard visualization choices., suggested_issue_title: "feat: define analytics reporting baseline", suggested_labels: [autospec:analytics]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: analytics.purposeful_metrics.required
+    rule_id: analytics.purposeful_metrics.required
+    title: Metrics have documented purpose
+    summary: Analytics surfaces must define what each metric helps decide.
+    category: analytics
+    severity: required
+    check: {type: required_doc, expected: {keywords: [metric, definition, purpose]}}
+    evidence_required: [metric definitions]
+    acceptance_criteria: [Key metrics include definitions and decision context.]
+  - <<: *defaults
+    id: reporting.pdf_quality.required_when_reports_exist
+    rule_id: reporting.pdf_quality.required_when_reports_exist
+    title: PDF reports meet quality expectations
+    summary: Report-generating systems must produce readable, branded, and reviewable exports.
+    category: reporting
+    severity: required
+    applies_when: {application_types: [analytics, reporting], profiles: [analytics], technologies: [], repo_conditions: [reports_exist]}
+    check: {type: required_report, expected: {keywords: [PDF, report]}}
+    evidence_required: [report template or generated sample]
+    acceptance_criteria: [Generated reports are readable and include core metadata.]
+  - <<: *defaults
+    id: visualization.library_standardization.required
+    rule_id: visualization.library_standardization.required
+    title: Visualization library is standardized
+    summary: Analytics apps should avoid multiple unexplained charting stacks.
+    category: visualization
+    severity: required
+    check: {type: forbidden_dependency_sprawl, expected: {categories: [charting]}}
+    evidence_required: [technology registry]
+    acceptance_criteria: [Charting library choices are standardized or waived.]
+  - <<: *defaults
+    id: visualization.chart_selection.required
+    rule_id: visualization.chart_selection.required
+    title: Chart selection is intentional
+    summary: Visualizations should match data shape and user task.
+    category: visualization
+    severity: required
+    check: {type: required_doc, expected: {keywords: [chart, visualization, selection]}}
+    evidence_required: [visualization guide or report docs]
+    acceptance_criteria: [Chart types have documented usage guidance.]

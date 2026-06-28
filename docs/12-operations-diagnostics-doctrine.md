@@ -1,5 +1,11 @@
 # 12. Operations And Diagnostics Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/operations-diagnostics.yml`
+
 ## Purpose
 
 Systems should be observable, diagnosable, recoverable, and understandable when they fail.

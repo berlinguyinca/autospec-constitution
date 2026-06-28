@@ -1,0 +1,52 @@
+name: autospec-constitution
+version: 0.1.0
+schema: 1
+doctrines:
+  - id: product
+    document: docs/01-product-doctrine.md
+    rules: rules/product.yml
+  - id: domain
+    document: docs/02-domain-doctrine.md
+    rules: rules/domain.yml
+  - id: architecture
+    document: docs/03-architecture-doctrine.md
+    rules: rules/architecture.yml
+  - id: engineering
+    document: docs/04-engineering-doctrine.md
+    rules: rules/engineering.yml
+  - id: testing
+    document: docs/05-testing-doctrine.md
+    rules: rules/testing.yml
+  - id: ui-ux
+    document: docs/06-ui-ux-doctrine.md
+    rules: rules/ui-ux.yml
+  - id: ai-platform
+    document: docs/07-ai-platform-doctrine.md
+    rules: rules/ai-platform.yml
+  - id: natural-language-application-interface
+    document: docs/08-natural-language-application-interface.md
+    rules: rules/natural-language-application-interface.yml
+  - id: documentation
+    document: docs/09-documentation-doctrine.md
+    rules: rules/documentation.yml
+  - id: analytics-reporting-visualization
+    document: docs/10-analytics-reporting-visualization.md
+    rules: rules/analytics-reporting-visualization.yml
+  - id: security-privacy
+    document: docs/11-security-privacy-doctrine.md
+    rules: rules/security-privacy.yml
+  - id: operations-diagnostics
+    document: docs/12-operations-diagnostics-doctrine.md
+    rules: rules/operations-diagnostics.yml
+  - id: metadata-digital-twin
+    document: docs/13-metadata-digital-twin-doctrine.md
+    rules: rules/metadata-digital-twin.yml
+  - id: repository-onboarding
+    document: docs/14-existing-repository-onboarding.md
+    rules: rules/repository-onboarding.yml
+  - id: continuous-evolution
+    document: docs/15-continuous-evolution-doctrine.md
+    rules: rules/continuous-evolution.yml
+  - id: maturity-model
+    document: docs/16-maturity-model.md
+    rules: rules/maturity-model.yml

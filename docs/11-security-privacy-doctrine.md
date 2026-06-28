@@ -1,5 +1,11 @@
 # 11. Security And Privacy Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/security-privacy.yml`
+
 ## Purpose
 
 Security and privacy should be preserved by default through explicit permissions, threat

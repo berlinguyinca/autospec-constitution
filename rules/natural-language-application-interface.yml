@@ -1,0 +1,63 @@
+schema: 1
+doctrine: natural-language-application-interface
+_defaults: &defaults
+  source: {doctrine: natural-language-application-interface, document: docs/08-natural-language-application-interface.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [ai-platform], technologies: [], repo_conditions: [nlai_enabled]}
+  metadata_required: [capability-registry, ai-capabilities]
+  quality_gates: [natural-language output is useful to humans]
+  remediation: {hint: Add structured capability and rendering behavior for natural-language interfaces., suggested_issue_title: "feat: add NLAI capability contract", suggested_labels: [autospec:nlai]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: nlai.capability_interface.required
+    rule_id: nlai.capability_interface.required
+    title: Natural-language capability interface is required
+    summary: NLAI systems must map user intents to registered capabilities.
+    category: nlai
+    severity: required
+    check: {type: required_capability, expected: {id: natural-language-interface}}
+    evidence_required: [capability registry entry]
+    acceptance_criteria: [Supported natural-language capabilities are discoverable.]
+  - <<: *defaults
+    id: nlai.pretty_rendering.required
+    rule_id: nlai.pretty_rendering.required
+    title: Human-readable rendering is required
+    summary: Natural-language interfaces should present clear prose/tables instead of raw machine dumps.
+    category: nlai
+    severity: required
+    check: {type: required_capability, expected: {id: human-readable-rendering}}
+    evidence_required: [rendering docs, tests, or UI evidence]
+    acceptance_criteria: [Primary NLAI responses are readable without inspecting raw JSON.]
+  - <<: *defaults
+    id: nlai.raw_json_avoidance.required
+    rule_id: nlai.raw_json_avoidance.required
+    title: Raw JSON is not the primary user output
+    summary: Raw JSON may exist for machines, but human output must summarize it clearly.
+    category: nlai
+    severity: required
+    check: {type: required_doc, expected: {keywords: [human-readable, markdown, table]}}
+    evidence_required: [response format documentation]
+    acceptance_criteria: [Human-facing reports avoid raw JSON as the main explanation.]
+  - <<: *defaults
+    id: nlai.sql_visualization.required_for_data_apps
+    rule_id: nlai.sql_visualization.required_for_data_apps
+    title: Data apps visualize query results
+    summary: Natural-language data apps should render SQL/query answers as tables or charts.
+    category: visualization
+    severity: required
+    applies_when: {application_types: [data, analytics], profiles: [analytics], technologies: [], repo_conditions: [nlai_enabled]}
+    check: {type: required_visualization_standard, expected: {keywords: [table, chart, SQL]}}
+    evidence_required: [visualization capability docs]
+    acceptance_criteria: [Query results have an appropriate non-raw rendering.]
+  - <<: *defaults
+    id: nlai.file_operations.required_for_file_apps
+    rule_id: nlai.file_operations.required_for_file_apps
+    title: File apps expose file-operation capabilities
+    summary: Natural-language file apps must define safe read/write/delete operations and approval posture.
+    category: nlai
+    severity: required
+    applies_when: {application_types: [file-app], profiles: [], technologies: [], repo_conditions: [nlai_enabled]}
+    check: {type: required_capability, expected: {id: file-operations}}
+    evidence_required: [file operation capability registry]
+    acceptance_criteria: [File operations and mutation rules are explicit.]

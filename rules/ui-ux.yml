@@ -1,0 +1,61 @@
+schema: 1
+doctrine: ui-ux
+_defaults: &defaults
+  source: {doctrine: ui-ux, document: docs/06-ui-ux-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+  metadata_required: [ui-surface]
+  quality_gates: [user-visible states are complete]
+  remediation: {hint: Add UI evidence for responsive and accessible states., suggested_issue_title: "feat: complete web UI baseline states", suggested_labels: [autospec:ui]}
+  risk: {level: medium, requires_human_review: true, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: ui.responsive.required_for_web
+    rule_id: ui.responsive.required_for_web
+    title: Responsive UI is required for web apps
+    summary: Web UI must support relevant responsive viewport classes.
+    category: ui
+    severity: required
+    check: {type: required_surface, expected: {surface: ui, keywords: [responsive, viewport]}}
+    evidence_required: [responsive screenshots or tests]
+    acceptance_criteria: [Mobile, tablet, and desktop behavior is validated or explicitly scoped.]
+  - <<: *defaults
+    id: ui.mobile_tablet_desktop.required
+    rule_id: ui.mobile_tablet_desktop.required
+    title: Mobile, tablet, and desktop states are covered
+    summary: Supported viewport classes must be named and validated.
+    category: ui
+    severity: required
+    check: {type: required_test, expected: {keywords: [mobile, tablet, desktop]}}
+    evidence_required: [viewport test matrix]
+    acceptance_criteria: [Viewport matrix evidence exists.]
+  - <<: *defaults
+    id: ui.empty_loading_error_states.required
+    rule_id: ui.empty_loading_error_states.required
+    title: Empty/loading/error states are required
+    summary: User-visible workflows need non-happy-path UI states.
+    category: ux
+    severity: required
+    check: {type: required_capability, expected: {id: ui-states}}
+    evidence_required: [state coverage docs, tests, or components]
+    acceptance_criteria: [Critical screens define loading, empty, error, and success behavior.]
+  - <<: *defaults
+    id: ui.design_tokens.required
+    rule_id: ui.design_tokens.required
+    title: Design tokens are required
+    summary: Reusable UI should centralize color, spacing, typography, and focus decisions.
+    category: ui
+    severity: required
+    check: {type: required_file, expected: {paths: [tokens, theme, design-system]}}
+    evidence_required: [design token or theme file]
+    acceptance_criteria: [UI styling decisions are reusable and discoverable.]
+  - <<: *defaults
+    id: ui.accessibility.required
+    rule_id: ui.accessibility.required
+    title: Accessibility is required
+    summary: UI must include semantic, keyboard, and contrast evidence.
+    category: accessibility
+    severity: required
+    check: {type: required_test, expected: {keywords: [accessibility, keyboard, contrast, a11y]}}
+    evidence_required: [accessibility checks or docs]
+    acceptance_criteria: [Representative UI can be operated and inspected accessibly.]

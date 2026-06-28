@@ -1,0 +1,54 @@
+schema: 1
+doctrine: maturity-model
+_defaults: &defaults
+  source: {doctrine: maturity-model, document: docs/16-maturity-model.md, section: Rules}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [maturity-score]
+  quality_gates: [maturity is scored from evidence]
+  remediation: {hint: Run the constitution audit and address blocking maturity gaps., suggested_issue_title: "chore: improve maturity score", suggested_labels: [autospec:governance]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: maturity.prototype.minimum.required
+    rule_id: maturity.prototype.minimum.required
+    title: Prototype maturity has minimum metadata
+    summary: Prototype repos need product purpose, docs, and focused validation evidence.
+    category: governance
+    severity: required
+    maturity: {level: prototype}
+    check: {type: required_metadata, expected: {metadata: maturity-score}}
+    evidence_required: [maturity score]
+    acceptance_criteria: [Prototype maturity can be evaluated from rules.]
+  - <<: *defaults
+    id: maturity.production.minimum.required
+    rule_id: maturity.production.minimum.required
+    title: Production maturity has operational evidence
+    summary: Production repos need testing, docs, diagnostics, and security posture evidence.
+    category: governance
+    severity: required
+    maturity: {level: production}
+    check: {type: required_metadata, expected: {metadata: maturity-score}}
+    evidence_required: [maturity score]
+    acceptance_criteria: [Production blockers are listed.]
+  - <<: *defaults
+    id: maturity.enterprise.minimum.required
+    rule_id: maturity.enterprise.minimum.required
+    title: Enterprise maturity has governance evidence
+    summary: Enterprise repos need permissions, audit, privacy, and decision-trace evidence.
+    category: governance
+    severity: required
+    maturity: {level: enterprise}
+    check: {type: required_metadata, expected: {metadata: maturity-score}}
+    evidence_required: [maturity score]
+    acceptance_criteria: [Enterprise blockers are listed.]
+  - <<: *defaults
+    id: maturity.autonomous.minimum.required
+    rule_id: maturity.autonomous.minimum.required
+    title: Autonomous maturity has rule-audit evidence
+    summary: Autonomous repos need Digital Twin, rule checks, bounded loops, verifier, and guidance evidence.
+    category: governance
+    severity: required
+    maturity: {level: autonomous}
+    check: {type: required_metadata, expected: {metadata: maturity-score}}
+    evidence_required: [maturity score and rule-check results]
+    acceptance_criteria: [Autonomous maturity blockers are listed.]

@@ -1,5 +1,11 @@
 # 02. Domain Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/domain.yml`
+
 ## Purpose
 
 Software should model the domain it serves with clear language, entities, relationships,

@@ -1,44 +1,109 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/berlinguyinca/autospec-constitution/schemas/rule.schema.json",
-  "title": "Autospec Rule",
-  "description": "Lightweight starter schema for a doctrine rule.",
+  "title": "Autospec Structured Rule",
+  "description": "Machine-readable doctrine rule consumed by Autospec while remaining human-authored policy.",
   "type": "object",
   "additionalProperties": true,
   "required": [
     "id",
-    "description",
+    "rule_id",
+    "title",
+    "summary",
+    "source",
+    "category",
     "severity",
-    "evidence",
-    "remediation"
+    "maturity",
+    "applies_when",
+    "check",
+    "evidence_required",
+    "acceptance_criteria",
+    "metadata_required",
+    "quality_gates",
+    "remediation",
+    "risk"
   ],
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(\\.[a-z0-9_]+)+$"
     },
-    "description": {
+    "rule_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(\\.[a-z0-9_]+)+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "required": ["doctrine", "document", "section"],
+      "properties": {
+        "doctrine": {"type": "string"},
+        "document": {"type": "string"},
+        "section": {"type": "string"}
+      }
+    },
+    "category": {
       "type": "string"
     },
     "severity": {
       "type": "string",
-      "enum": [
-        "info",
-        "low",
-        "medium",
-        "high",
-        "critical"
-      ]
+      "enum": ["required", "recommended", "optional", "forbidden"]
     },
-    "evidence": {
-      "type": "array",
-      "description": "Evidence expected for evaluating the rule.",
-      "items": {
-        "type": "string"
-      },
-      "default": []
+    "maturity": {
+      "type": "object",
+      "required": ["level"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["prototype", "production", "enterprise", "autonomous"]
+        }
+      }
     },
+    "applies_when": {
+      "type": "object",
+      "properties": {
+        "application_types": {"type": "array", "items": {"type": "string"}},
+        "profiles": {"type": "array", "items": {"type": "string"}},
+        "technologies": {"type": "array", "items": {"type": "string"}},
+        "repo_conditions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "check": {
+      "type": "object",
+      "required": ["type", "expected"],
+      "properties": {
+        "type": {"type": "string"},
+        "expected": {"type": "object"}
+      }
+    },
+    "evidence_required": {"type": "array", "items": {"type": "string"}},
+    "acceptance_criteria": {"type": "array", "items": {"type": "string"}},
+    "metadata_required": {"type": "array", "items": {"type": "string"}},
+    "quality_gates": {"type": "array", "items": {"type": "string"}},
     "remediation": {
-      "type": "string"
+      "type": "object",
+      "required": ["hint", "suggested_issue_title", "suggested_labels"],
+      "properties": {
+        "hint": {"type": "string"},
+        "suggested_issue_title": {"type": "string"},
+        "suggested_labels": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "risk": {
+      "type": "object",
+      "required": ["level", "requires_human_review", "requires_architecture_review"],
+      "properties": {
+        "level": {"type": "string", "enum": ["low", "medium", "high"]},
+        "requires_human_review": {"type": "boolean"},
+        "requires_architecture_review": {"type": "boolean"}
+      }
     }
   }
 }

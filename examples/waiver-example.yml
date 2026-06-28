@@ -1,0 +1,14 @@
+waivers:
+  - rule_id: ai.rag.required_for_documented_apps
+    status: waived
+    reason: Static public marketing site with no authenticated app shell or AI assistant.
+    owner: berlinguyinca
+    expires: "2026-12-31"
+    risk: low
+    replacement: Public static documentation remains browsable without AI.
+    issue: null
+opt_outs:
+  - capability: ai_assistant
+    reason: No interactive AI surface is planned for this repository.
+    owner: berlinguyinca
+    status: opted_out

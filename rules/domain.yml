@@ -1,0 +1,31 @@
+schema: 1
+doctrine: domain
+_defaults: &defaults
+  source: {doctrine: domain, document: docs/02-domain-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [domain-model]
+  quality_gates: [domain language is traceable]
+  remediation: {hint: Add domain entities and language to the repository metadata/docs., suggested_issue_title: "docs: document domain model", suggested_labels: [autospec:domain]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: domain.entities.required
+    rule_id: domain.entities.required
+    title: Domain entities are discoverable
+    summary: Core domain resources, actors, or concepts must be represented in docs or metadata.
+    category: domain
+    severity: required
+    check: {type: required_metadata, expected: {metadata: domain-model}}
+    evidence_required: [domain-model metadata or domain docs]
+    acceptance_criteria: [Core domain entities are named with evidence.]
+  - <<: *defaults
+    id: domain.workflow_language.required
+    rule_id: domain.workflow_language.required
+    title: Workflow language is consistent
+    summary: Important workflows should use consistent names across docs, tests, and UI/API surfaces.
+    category: domain
+    severity: recommended
+    check: {type: required_metadata, expected: {metadata: workflow-map}}
+    evidence_required: [workflow-map metadata]
+    acceptance_criteria: [Workflow names can be traced across at least one evidence source.]

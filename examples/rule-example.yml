@@ -1,0 +1,20 @@
+rules:
+  - id: testing.playwright.required_for_web
+    rule_id: testing.playwright.required_for_web
+    title: Playwright browser workflow testing
+    summary: Web applications should use Playwright for browser-level workflows unless waived.
+    source: {doctrine: testing, document: docs/05-testing-doctrine.md, section: Rules}
+    category: testing
+    severity: required
+    maturity: {level: production}
+    applies_when: {application_types: [web], profiles: [web], technologies: [], repo_conditions: []}
+    check: {type: required_tool, expected: {name: playwright}}
+    evidence_required: [Playwright dependency, config, or tests]
+    acceptance_criteria: [At least one critical browser workflow can run through Playwright.]
+    metadata_required: [test-coverage-map]
+    quality_gates: [validation evidence is recorded]
+    remediation:
+      hint: Add Playwright configuration and one critical workflow test.
+      suggested_issue_title: "test: add Playwright responsive workflow coverage"
+      suggested_labels: [autospec:testing, autospec:web]
+    risk: {level: low, requires_human_review: false, requires_architecture_review: false}

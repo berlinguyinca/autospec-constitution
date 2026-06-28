@@ -1,0 +1,12 @@
+schema: 1
+application:
+  type: web
+  maturity_target: production
+profiles: [web, ai-platform]
+rules:
+  - rule_id: testing.playwright.required_for_web
+    resolution: active
+    reason: Applies to web profile and production maturity.
+  - rule_id: ai.rag.required_for_documented_apps
+    resolution: waived
+    reason: Waiver exists with owner, expiry, and replacement.

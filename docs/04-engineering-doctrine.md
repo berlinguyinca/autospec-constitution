@@ -1,5 +1,11 @@
 # 04. Engineering Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/engineering.yml`
+
 ## Purpose
 
 Engineering work should be maintainable, standardized, modernized deliberately, and delivered in

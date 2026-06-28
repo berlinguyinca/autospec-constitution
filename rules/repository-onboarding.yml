@@ -1,0 +1,41 @@
+schema: 1
+doctrine: repository-onboarding
+_defaults: &defaults
+  source: {doctrine: repository-onboarding, document: docs/14-existing-repository-onboarding.md, section: Rules}
+  maturity: {level: prototype}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: [existing_repo]}
+  metadata_required: [repository-inventory]
+  quality_gates: [existing repos are inspected before mutation]
+  remediation: {hint: Start with read-only discovery and metadata before implementation work., suggested_issue_title: "chore: onboard repository with read-only metadata", suggested_labels: [autospec:onboarding]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: onboarding.read_only_first.required
+    rule_id: onboarding.read_only_first.required
+    title: Existing repositories are read-only first
+    summary: Autospec should inspect and report before proposing mutations in existing repos.
+    category: onboarding
+    severity: required
+    check: {type: required_report, expected: {paths: [.autospec/reports/metadata-discovery.md]}}
+    evidence_required: [metadata discovery report]
+    acceptance_criteria: [Initial onboarding has read-only evidence.]
+  - <<: *defaults
+    id: onboarding.evidence_confidence.required
+    rule_id: onboarding.evidence_confidence.required
+    title: Inferred facts include evidence and confidence
+    summary: Repository intelligence must distinguish evidence from inference.
+    category: onboarding
+    severity: required
+    check: {type: required_metadata, expected: {metadata: repository-inventory}}
+    evidence_required: [metadata facts with evidence/confidence]
+    acceptance_criteria: [Inferred facts include evidence and confidence.]
+  - <<: *defaults
+    id: onboarding.metadata_only_first_pr.required_for_existing_repos
+    rule_id: onboarding.metadata_only_first_pr.required_for_existing_repos
+    title: Existing repos start with metadata-only PRs
+    summary: Initial autonomous work on an existing repo should be metadata/spec/docs-only unless a human opts in.
+    category: onboarding
+    severity: required
+    check: {type: required_doc, expected: {keywords: [metadata-only, onboarding, first PR]}}
+    evidence_required: [onboarding plan or worker packet]
+    acceptance_criteria: [First work item is bounded to docs/spec/metadata or has explicit approval.]

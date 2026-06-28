@@ -1,5 +1,11 @@
 # 10. Analytics, Reporting, And Visualization Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/analytics-reporting-visualization.yml`
+
 ## Purpose
 
 Analytics and reporting should help people make decisions with accurate, purposeful, and

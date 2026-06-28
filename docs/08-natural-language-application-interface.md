@@ -1,5 +1,11 @@
 # 08. Natural Language Application Interface Doctrine
 
+## Machine-readable rules
+
+Structured rules for this doctrine live in:
+
+`../rules/natural-language-application-interface.yml`
+
 ## Purpose
 
 Natural-language application interfaces should expose real application capabilities in a

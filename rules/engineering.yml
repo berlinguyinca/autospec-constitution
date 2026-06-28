@@ -1,0 +1,51 @@
+schema: 1
+doctrine: engineering
+_defaults: &defaults
+  source: {doctrine: engineering, document: docs/04-engineering-doctrine.md, section: Rules}
+  maturity: {level: production}
+  applies_when: {application_types: [], profiles: [], technologies: [], repo_conditions: []}
+  metadata_required: [technology-registry]
+  quality_gates: [changes are small and standards are explicit]
+  remediation: {hint: Document or enforce the engineering standard with evidence., suggested_issue_title: "chore: standardize engineering practice", suggested_labels: [autospec:engineering]}
+  risk: {level: low, requires_human_review: false, requires_architecture_review: false}
+rules:
+  - <<: *defaults
+    id: engineering.design_patterns.documented_when_nontrivial
+    rule_id: engineering.design_patterns.documented_when_nontrivial
+    title: Nontrivial design patterns are documented
+    summary: Complex local patterns must be explained before agents extend them.
+    category: engineering
+    severity: recommended
+    check: {type: required_doc, expected: {keywords: [pattern, convention, architecture]}}
+    evidence_required: [pattern or convention documentation]
+    acceptance_criteria: [A maintainer can identify the intended extension pattern.]
+  - <<: *defaults
+    id: engineering.library_standardization.required
+    rule_id: engineering.library_standardization.required
+    title: Library standards are explicit
+    summary: Repositories should choose standard libraries per concern and document exceptions.
+    category: engineering
+    severity: required
+    check: {type: required_metadata, expected: {metadata: technology-registry}}
+    evidence_required: [technology registry]
+    acceptance_criteria: [Primary libraries are inventoried by category.]
+  - <<: *defaults
+    id: engineering.small_reviewable_changes.required
+    rule_id: engineering.small_reviewable_changes.required
+    title: Changes remain small and reviewable
+    summary: Work should be decomposed into bounded PRs with clear validation evidence.
+    category: engineering
+    severity: required
+    check: {type: required_metadata, expected: {metadata: issue-plan}}
+    evidence_required: [issue or plan decomposition]
+    acceptance_criteria: [A reviewer can understand one change without broad unrelated context.]
+  - <<: *defaults
+    id: engineering.dependency_sprawl.forbidden
+    rule_id: engineering.dependency_sprawl.forbidden
+    title: Dependency sprawl is forbidden
+    summary: Multiple libraries for the same concern require an explicit exception.
+    category: engineering
+    severity: forbidden
+    check: {type: forbidden_dependency_sprawl, expected: {categories: [charting, testing, formatting, http_client, component_system]}}
+    evidence_required: [technology registry sprawl analysis]
+    acceptance_criteria: [No unexplained duplicate library family is present.]
