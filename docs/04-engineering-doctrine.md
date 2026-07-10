@@ -21,9 +21,8 @@ maintainability, modernization, code review shape, and refactoring discipline.
 - Prefer deletion and simplification over new layers.
 - Express quality as a machine-readable gate registry: every check is deterministic-and-blocking,
   independent-critique, or human-review, and each rule has a single canonical home.
-- Generated or refactored code is judged by tests and an independent reviewer or critic; the
-  author (human or agent) never self-certifies its own change.
-- Improvement is monotonic: never accept a change that regresses a gate.
+- Review of generated or refactored work — independence, no self-certification, and the
+  non-regression ratchet — is governed by the Review and Critique Doctrine (19).
 
 ## Quality Gates
 
@@ -31,8 +30,9 @@ maintainability, modernization, code review shape, and refactoring discipline.
 - Refactors preserve behavior with tests or explicit verification evidence.
 - Large changes are split into reviewable units.
 - Shared abstractions have more than speculative reuse.
-- No gate (tests, coverage, performance, lint, type-check) regresses versus the base revision.
-- High-stakes changes have an approver distinct from the producer of the change.
+- The Review and Critique Doctrine's gates (19) apply: an independent approver for
+  high-stakes changes and no gate (tests, coverage, performance, lint, type-check)
+  regression versus the base revision.
 - Critical logic is hardened by mutation or property tests, not only example tests.
 
 ## Required Metadata

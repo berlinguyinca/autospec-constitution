@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1 - 2026-07-10
+
+- Deduplicated review-and-critique law: the engineering and testing doctrines' free-standing
+  independence, no-self-certification, and non-regression statements are now one-line
+  cross-references to the Review and Critique Doctrine (19), their canonical home. No
+  expected behavior changes (patch).
+
 ## 0.6.0 - 2026-07-10
 
 - Added the Review and Critique Doctrine (docs/19): independent, rubric-anchored evaluation
