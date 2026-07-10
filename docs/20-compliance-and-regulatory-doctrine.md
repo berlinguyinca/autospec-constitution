@@ -19,8 +19,8 @@ obligations, consent requirements, or open-source license obligations.
   data flow launches.
 - Enforce data residency and retention in code and configuration, not only in policy documents.
 - Support data-subject rights (access, erasure, portability) for regulated personal data.
-- Comply with open-source licenses: maintain an SBOM and a license policy; do not ship
-  disallowed licenses.
+- Comply with open-source licenses: maintain a license policy and gate on the SBOM the
+  Security and Privacy Doctrine already requires; do not ship disallowed licenses.
 - Produce an auditable evidence bundle suitable for external attestation.
 
 ## Quality Gates
