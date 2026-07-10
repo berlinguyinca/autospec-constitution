@@ -35,6 +35,10 @@ retention and deletion policies, dependency audits, compliance profiles, and AI 
 - Scan dependencies automatically, pin/lock them, produce an SBOM, and ship no
   known-critical vulnerabilities.
 - Anchor the security posture to an external standard (OWASP ASVS / Top 10).
+- New trust boundaries and sensitive flows get a threat model with mitigations before build.
+- Map each security-relevant change to the controls of the anchored external standard rather
+  than improvising per-change coverage.
+- Security-sensitive or irreversible changes require an approver independent of the author.
 
 ## Quality Gates
 
@@ -51,6 +55,8 @@ retention and deletion policies, dependency audits, compliance profiles, and AI 
 - A restrictive CSP and the baseline security headers are present on responses.
 - Third-party resources carry integrity attributes.
 - Dependency and supply-chain scans pass with no known-critical findings.
+- Defaults are secure.
+- New endpoints/actions pass an authorization review enforcing least privilege.
 
 ## Required Metadata
 

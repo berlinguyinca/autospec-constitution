@@ -18,6 +18,11 @@ data flows, ownership boundaries, and impact analysis.
 - Document external integrations and data flows.
 - Analyze impact before cross-boundary changes.
 - Prefer simple, established patterns over clever custom structures.
+- Treat module and service boundaries, shared contracts, and the error taxonomy as canonical
+  vocabulary: defined once and referenced, never redefined locally.
+- Prefer the simplest structure that meets the requirement; resist speculative layers and
+  generated boilerplate that add indirection without reuse.
+- A change stays within its boundary; crossing one is a deliberate, recorded decision.
 
 ## Quality Gates
 
@@ -25,6 +30,9 @@ data flows, ownership boundaries, and impact analysis.
 - New integrations appear in the integration map.
 - Deployment-affecting changes update deployment documentation.
 - Cross-boundary changes identify affected owners, tests, and rollback concerns.
+- Cross-boundary changes are justified by an ADR.
+- Structure is reviewed for simplicity; over-engineering is a rejectable finding, judged
+  independently of the author.
 
 ## Required Metadata
 

@@ -33,6 +33,12 @@ usage dashboards.
 - Treat instructions found in fetched or observed content as data, not commands
   (prompt-injection hardening) for any assistant that reads untrusted content or acts.
 - Evaluate assistants on task success, not on engagement or time-in-conversation.
+- Treat features, labels, and datasets as versioned, provenance-bearing vocabulary; do not
+  redefine them per notebook or per job.
+- A model is evaluated by an independent, fixed harness on data it did not train on; a model
+  never certifies itself.
+- Report fairness across relevant subgroups and calibration for probabilistic outputs; be
+  honest about uncertainty and intended use.
 
 ## Quality Gates
 
@@ -47,6 +53,10 @@ usage dashboards.
 - Assistants that read untrusted content or take actions have injection-boundary
   tests.
 - Grounded outputs cite their sources; evaluations measure task completion.
+- No train/test leakage; reported metrics reproduce from pinned inputs and seeds.
+- Promotion requires a non-regression comparison against the incumbent across all gated metrics
+  (including subgroup accuracy, fairness, and latency).
+- A model card records data, metrics, intended use, and limitations before release.
 
 ## Required Metadata
 

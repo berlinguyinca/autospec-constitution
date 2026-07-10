@@ -29,6 +29,12 @@ library standardization, dashboards, exports, and human-readable outputs.
 - Encode categories with an appropriate palette family (categorical, sequential, or
   diverging); never use rainbow/jet scales, and never rely on hue alone.
 - Charts inherit the application theme and re-theme with it.
+- The semantic layer is the single source of truth for metric meaning: every figure references
+  a definition (name, owner, formula, grain); no ad-hoc metric redefinitions.
+- Present data honestly: bar charts start at zero; disclose sample size and denominators; show
+  uncertainty on estimates; never encode meaning by color alone; charts re-theme with the app.
+- An analysis answers the question actually asked; consequential findings get an independent
+  methodology review.
 
 ## Quality Gates
 
@@ -42,6 +48,11 @@ library standardization, dashboards, exports, and human-readable outputs.
 - Bar charts with truncated baselines are rejected or corrected.
 - Estimated values display their uncertainty; encodings are not color-only.
 - Charts render correctly in every supported theme.
+- Data-quality and freshness checks fail before users rely on stale or broken output;
+  dashboards disclose freshness and scope.
+- Charts pass a statistical-honesty check (zero baselines, n and uncertainty shown,
+  not color-only), judged independently.
+- Consequential analyses record their question, method, and reviewer.
 
 ## Required Metadata
 

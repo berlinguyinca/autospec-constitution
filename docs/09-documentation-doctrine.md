@@ -18,6 +18,9 @@ generated walkthroughs, API references, and operational runbooks.
 - Make important docs RAG-ready with clear headings and stable links.
 - Include screenshots or generated walkthroughs for visual workflows when helpful.
 - Maintain runbooks for operational procedures.
+- Treat documentation as a tested artifact: code examples are executable and verified, not
+  illustrative-only.
+- Flag documentation that has drifted from the behavior it describes.
 
 ## Quality Gates
 
@@ -26,6 +29,8 @@ generated walkthroughs, API references, and operational runbooks.
 - RAG-ready docs avoid ambiguous headings and unexplained acronyms.
 - Tutorials are tested or reviewed against the current UI.
 - PDFs or exports are formatted for their audience.
+- Documented examples run and produce the stated output; links resolve.
+- Behavior changes update user or maintainer docs within the same change; stale docs are flagged.
 
 ## Required Metadata
 
