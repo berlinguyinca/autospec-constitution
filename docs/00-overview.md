@@ -55,6 +55,6 @@ gates.
 
 ## Examples
 
-- A web analytics product pins Constitution `0.1.0` and selects `web`, `analytics`, and
+- A web analytics product pins Constitution `0.4.0` and selects `web`, `analytics`, and
   `ai-platform` profiles.
 - An established repository opens a metadata-only onboarding PR before feature changes.
