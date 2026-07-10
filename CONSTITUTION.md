@@ -1,6 +1,6 @@
 # Autospec Constitution
 
-Version: 0.5.0
+Version: 0.6.0
 
 This Constitution defines the engineering policy that Autospec-compatible systems should read,
 interpret, enforce, and evolve. It contains no implementation logic. It defines principles,
@@ -45,6 +45,8 @@ The Constitution is composed of doctrine chapters:
 16. Maturity Model
 17. Governance and Versioning
 18. Financial Integrity Doctrine
+19. Review and Critique Doctrine
+20. Compliance and Regulatory Doctrine
 
 Each doctrine should define purpose, scope, rules, quality gates, required metadata, acceptance
 criteria, implementation hints, anti-patterns, and examples.

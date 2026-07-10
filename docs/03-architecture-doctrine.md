@@ -23,6 +23,12 @@ data flows, ownership boundaries, and impact analysis.
 - Prefer the simplest structure that meets the requirement; resist speculative layers and
   generated boilerplate that add indirection without reuse.
 - A change stays within its boundary; crossing one is a deliberate, recorded decision.
+- Treat published APIs as products: a machine-readable spec (OpenAPI/proto/SDL) is the contract's
+  source of truth, and backward compatibility is preserved unless a major version bumps.
+- Treat data-pipeline boundaries as contracts too: producers and consumers agree on a schema,
+  and schema evolution is backward-compatible or explicitly versioned.
+- Design migrations for availability: use expand/contract so no destructive change is coupled to
+  code still running against the old shape.
 
 ## Quality Gates
 
@@ -33,6 +39,10 @@ data flows, ownership boundaries, and impact analysis.
 - Cross-boundary changes are justified by an ADR.
 - Structure is reviewed for simplicity; over-engineering is a rejectable finding, judged
   independently of the author.
+- Spec diffs run breaking-change detection; breaking API changes require a major version and
+  follow the deprecation policy.
+- Producer/consumer contract tests pass before a schema change ships.
+- Schema migrations are online-safe, reversible, and tested at prod-like scale.
 
 ## Required Metadata
 

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0 - 2026-07-10
+
+- Added the Review and Critique Doctrine (docs/19): independent, rubric-anchored evaluation
+  with the non-regression ratchet, actionable rule-tied findings, and no self-certification of
+  high-stakes work — formalizing the stakes-proportional verification principle.
+- Added the Compliance and Regulatory Doctrine (docs/20): obligations register, privacy by
+  design, residency/retention enforced in code, data-subject rights, license/SBOM gates, and
+  audit-ready evidence bundles.
+- Enriched the architecture doctrine with API-as-product contracts (machine-readable specs,
+  breaking-change detection), data-pipeline contracts, and expand/contract migration rules.
+- Enriched the operations doctrine with deploy/release decoupling (progressive rollout,
+  removable flags, rollback triggers), migration-compatible deploy gates, signed artifacts
+  with provenance, and cost-as-operational-signal rules and gates.
+- No breaking changes; all additions are backward compatible.
+
 ## 0.5.0 - 2026-07-09
 
 - Added the Financial Integrity Doctrine (docs/18): canonical chart-of-accounts vocabulary,
