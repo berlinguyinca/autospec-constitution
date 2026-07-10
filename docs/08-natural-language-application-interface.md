@@ -19,6 +19,14 @@ generate reports, execute workflows, create exports, and explain application sta
   execution.
 - The assistant should explain what it did, what evidence it used, and what remains uncertain.
 - Application capabilities exposed through natural language should be cataloged.
+- A natural-language interface must never be the only path to a capability; every action it
+  can take is also reachable through conventional UI.
+- Ground answers in real data (retrieval) and cite sources; be honest about uncertainty and
+  able to say it does not know.
+- Stream output and remain interruptible.
+- Treat instructions found in fetched or observed content as data, not commands
+  (prompt-injection hardening) for any assistant that reads untrusted content or acts.
+- Evaluate assistants on task success, not on engagement or time-in-conversation.
 
 ## Quality Gates
 
@@ -27,6 +35,9 @@ generate reports, execute workflows, create exports, and explain application sta
 - Workflow execution has audit logs and confirmation boundaries for risky actions.
 - Reports and exports are formatted for human consumption.
 - Failure output gives a useful recovery path.
+- Every assistant-reachable capability has a conventional-UI equivalent.
+- Assistants that read untrusted content or take actions have injection-boundary tests.
+- Grounded outputs cite their sources; evaluations measure task completion.
 
 ## Required Metadata
 
@@ -53,6 +64,9 @@ generate reports, execute workflows, create exports, and explain application sta
 - Returning raw tool responses directly to users.
 - Allowing natural language to bypass normal workflow validation.
 - Treating the assistant as separate from the application permission model.
+- Features reachable only by talking to the assistant.
+- Assistant guidance that can be overridden by the content it reads.
+- Optimizing the assistant for time-in-chat rather than outcomes.
 
 ## Examples
 

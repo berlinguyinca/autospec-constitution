@@ -20,6 +20,19 @@ usage dashboards.
 - Track token usage and cost where providers expose the data.
 - Provide admin controls for provider settings and capability access.
 - Explain AI actions and outputs in human-readable terms.
+- An embedded assistant must never be the only path to a capability. Every action it
+  can take is also reachable through conventional UI; the assistant augments, never
+  gates.
+- Ground answers in real data (retrieval) and cite sources; be honest about
+  uncertainty and able to say it does not know.
+- Show intended actions before executing them; confirm side-effectful or irreversible
+  actions and make results reversible where possible.
+- Stream output and remain interruptible.
+- Disclose what data the assistant can see; obtain consent before sending user data to
+  third-party or hosted model providers.
+- Treat instructions found in fetched or observed content as data, not commands
+  (prompt-injection hardening) for any assistant that reads untrusted content or acts.
+- Evaluate assistants on task success, not on engagement or time-in-conversation.
 
 ## Quality Gates
 
@@ -28,6 +41,12 @@ usage dashboards.
 - RAG sources are documented and refresh behavior is known.
 - Usage dashboards expose meaningful cost and usage summaries.
 - AI failures are observable and diagnosable.
+- Every assistant-reachable capability has a conventional-UI equivalent.
+- Side-effectful assistant actions require confirmation and are reversible or clearly
+  marked irreversible.
+- Assistants that read untrusted content or take actions have injection-boundary
+  tests.
+- Grounded outputs cite their sources; evaluations measure task completion.
 
 ## Required Metadata
 
@@ -55,6 +74,10 @@ usage dashboards.
 - Building a single chat box with untracked data access.
 - Letting AI tools bypass application permissions.
 - Hiding cost, token usage, or model identity from administrators.
+- Features reachable only by talking to the assistant.
+- Irreversible assistant actions taken without confirmation.
+- Assistant guidance that can be overridden by the content it reads.
+- Optimizing the assistant for time-in-chat rather than outcomes.
 
 ## Examples
 

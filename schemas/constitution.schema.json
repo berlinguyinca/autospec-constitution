@@ -19,7 +19,7 @@
     },
     "version": {
       "type": "string",
-      "default": "0.1.0"
+      "default": "0.4.0"
     },
     "doctrines": {
       "type": "array",
@@ -63,7 +63,7 @@
   "examples": [
     {
       "name": "Autospec Constitution",
-      "version": "0.1.0",
+      "version": "0.4.0",
       "doctrines": [],
       "profiles_supported": [],
       "maturity_levels": []

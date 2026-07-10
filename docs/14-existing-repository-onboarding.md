@@ -19,6 +19,16 @@ request shape, gap reporting, and safe adoption of the Constitution.
 - Make the first pull request metadata-only unless the user explicitly requests otherwise.
 - Separate observed behavior from recommended improvements.
 - Avoid changing runtime behavior during onboarding.
+- Audit before changing: inventory the existing tokens/values in use and capture a
+  visual baseline.
+- Introduce a token/shim layer before restyling, so values can change centrally
+  without a rewrite.
+- Migrate in impact-to-risk order: typography, then color, then spacing, then depth,
+  then component states, then layout.
+- Restyle section by section behind flags (strangler-fig); preserve behavior while
+  changing appearance.
+- Regression-test each step against the captured baseline.
+- Add lint guardrails after migration to prevent re-accumulation of raw values.
 
 ## Quality Gates
 
@@ -26,6 +36,10 @@ request shape, gap reporting, and safe adoption of the Constitution.
 - First PR creates or updates metadata without behavior changes.
 - Unknowns are tracked as gaps, not guessed into compliance.
 - High-risk findings become issues with severity and remediation guidance.
+- A pre-change visual and value-inventory baseline exists.
+- Restyle changes ship incrementally with visual-regression evidence.
+- Behavior parity is verified against the baseline.
+- A raw-value lint is active after migration.
 
 ## Required Metadata
 
