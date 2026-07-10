@@ -34,6 +34,13 @@ diagnosis, Playwright reproductions, MCP-based diagnostics, and self-healing bou
   and never log secrets or personal data.
 - Give operational procedures a runbook with a rollback path.
 - Feed production signal (errors, RUM, incidents) back into the refinement backlog.
+- Decouple deploy from release: ship risky changes progressively (canary/gradual rollout)
+  behind removable feature flags, with automated rollback triggers on SLO burn.
+- Gate deploys that carry schema migrations on expand/contract compatibility with the running
+  version.
+- Sign build artifacts and record provenance (e.g. SLSA).
+- Treat cost as an operational signal: tag resources for attribution and alert on budget and
+  spend anomalies.
 
 ## Quality Gates
 
@@ -53,6 +60,10 @@ diagnosis, Playwright reproductions, MCP-based diagnostics, and self-healing bou
 - User-facing services define SLOs; alerting is SLO-based; health and synthetic checks feed a
   status signal.
 - New operational procedures have a runbook; incidents produce a blameless postmortem.
+- Production deploys pass a checklist (CI green, approvals, rollback plan) and have tested
+  rollback triggers.
+- Artifacts are signed with recorded provenance.
+- Cloud resources are tagged for cost attribution; budgets and anomaly alerts exist.
 
 ## Required Metadata
 
