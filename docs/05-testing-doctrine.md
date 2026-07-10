@@ -19,6 +19,16 @@ performance, and migration testing.
 - Use visual and accessibility tests for user-facing UI.
 - Use migration tests for schema or data transformations.
 - Prefer Playwright for web app end-to-end testing unless the repository has another standard.
+- Run automated accessibility checks on representative pages and states.
+- Capture visual-regression baselines and diff them when UI changes are meaningful.
+- Verify keyboard and screen-reader paths for critical workflows.
+- Enforce performance budgets for first load and key interactions as gates.
+- Automatically generated or refined UI is evaluated on two independent tracks:
+  deterministic gates (accessibility, performance budgets, contrast, visual regression,
+  interaction/state assertions) and an independent design critique.
+- The critic that judges generated UI is separate from the generator, anchored to a
+  fixed rubric; refinement must be non-regressive (never accept a change that lowered
+  any gate or rubric score). Deterministic gates outrank subjective judgment on conflict.
 
 ## Quality Gates
 
@@ -27,6 +37,13 @@ performance, and migration testing.
 - Critical flows have executable evidence.
 - Accessibility-sensitive UI is checked with automated and, where needed, manual evidence.
 - Performance-sensitive work defines thresholds.
+- Accessibility check results are attached as review evidence.
+- Visual-regression diffs are reviewed for meaningful UI changes.
+- Performance-budget pass/fail is recorded.
+- Critical flows have keyboard-operable end-to-end coverage.
+- Generated/refined UI has attached evidence: per-state and per-theme screenshots,
+  deterministic gate results, and independent-critic rubric scores.
+- No accepted refinement regressed a prior gate or rubric dimension.
 
 ## Required Metadata
 

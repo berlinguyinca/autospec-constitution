@@ -1,6 +1,6 @@
 # Autospec Constitution
 
-Version: 0.1.0
+Version: 0.4.0
 
 This Constitution defines the engineering policy that Autospec-compatible systems should read,
 interpret, enforce, and evolve. It contains no implementation logic. It defines principles,

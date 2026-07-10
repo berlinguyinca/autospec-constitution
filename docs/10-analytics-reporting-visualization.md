@@ -18,6 +18,17 @@ library standardization, dashboards, exports, and human-readable outputs.
 - Format reports and PDFs for the intended audience.
 - Show filters, time ranges, units, and data freshness.
 - Prefer readable summaries and visuals over raw data dumps.
+- Bar charts start at a zero baseline; line charts may use a non-zero axis only when
+  the axis is clearly labeled.
+- Show the sample size and denominator behind any rate or percentage.
+- Show uncertainty (intervals, error bars, bands) whenever a value is an estimate.
+- Do not imply causation from a correlation view, and do not extrapolate a trend
+  beyond the data.
+- Prefer showing the distribution over a single aggregate when the shape carries
+  meaning; label logarithmic or non-zero axes explicitly.
+- Encode categories with an appropriate palette family (categorical, sequential, or
+  diverging); never use rainbow/jet scales, and never rely on hue alone.
+- Charts inherit the application theme and re-theme with it.
 
 ## Quality Gates
 
@@ -26,6 +37,11 @@ library standardization, dashboards, exports, and human-readable outputs.
 - Charts are accessible and readable at supported sizes.
 - Exported PDFs preserve layout and meaning.
 - Data quality limitations are visible.
+- Every chart has a text alternative stating its takeaway and, where practical, an
+  accessible data table behind it.
+- Bar charts with truncated baselines are rejected or corrected.
+- Estimated values display their uncertainty; encodings are not color-only.
+- Charts render correctly in every supported theme.
 
 ## Required Metadata
 
@@ -52,6 +68,11 @@ library standardization, dashboards, exports, and human-readable outputs.
 - Collecting metrics without a decision they support.
 - Using visually impressive charts that obscure meaning.
 - Returning raw JSON when a table, chart, or report is expected.
+- Truncated bar-chart axes that exaggerate differences.
+- Percentages reported without sample size.
+- Rainbow/jet color scales that invent boundaries not present in the data.
+- A mean presented where the distribution is the story.
+- Charts stuck on a light surface while the rest of the product is in dark mode.
 
 ## Examples
 
