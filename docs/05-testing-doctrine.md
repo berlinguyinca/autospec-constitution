@@ -29,6 +29,12 @@ performance, and migration testing.
 - The critic that judges generated UI is separate from the generator, anchored to a
   fixed rubric; refinement must be non-regressive (never accept a change that lowered
   any gate or rubric score). Deterministic gates outrank subjective judgment on conflict.
+- Evaluate generated artifacts of any kind (code, UI, analyses, models) with the same loop:
+  deterministic gates that block, plus an independent critic scoring a fixed rubric.
+- The system under evaluation never grades itself; the judge sees only the artifact, its brief,
+  and the rubric.
+- Prefer serial, deterministic test execution where shared state or side effects make
+  concurrency unsafe; flakiness is a defect, not noise.
 
 ## Quality Gates
 
@@ -44,6 +50,9 @@ performance, and migration testing.
 - Generated/refined UI has attached evidence: per-state and per-theme screenshots,
   deterministic gate results, and independent-critic rubric scores.
 - No accepted refinement regressed a prior gate or rubric dimension.
+- Evidence exists for each meaningful state/case, not just the happy path.
+- The independent-critic score and all deterministic gates are recorded; acceptance requires no
+  regression on either.
 
 ## Required Metadata
 

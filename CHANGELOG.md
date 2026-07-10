@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.5.0 - 2026-07-09
+
+- Added the Financial Integrity Doctrine (docs/18): canonical chart-of-accounts vocabulary,
+  the accounting identity, segregation of duties, immutable audit trails, deterministic
+  reproducibility, and materiality-based human review.
+- Added the stakes-proportional verification and independence principle to CONSTITUTION.md
+  paragraph 7, with a cross-reference to the baselines quality-method document.
+- Enriched the architecture doctrine with canonical-vocabulary boundaries, simplicity-first
+  structure, and cross-boundary ADR gates.
+- Enriched the engineering doctrine with the machine-readable gate registry, independent
+  review of generated code, and monotonic (non-regressing) improvement gates.
+- Generalized the testing doctrine's evaluation loop to all generated artifacts with an
+  independent critic and no self-grading.
+- Enriched the AI platform doctrine with versioned feature/dataset vocabulary, independent
+  model evaluation, fairness/calibration reporting, and non-regression promotion gates.
+- Added tested-documentation rules and gates to the documentation doctrine.
+- Added semantic-layer single-source-of-truth, statistical honesty, and independent
+  methodology-review rules to the analytics doctrine.
+- Added threat-model-before-build, ASVS mapping, and independent-approver rules to the
+  security/privacy doctrine.
+- Added three-pillar instrumentation, SLO-based alerting, runbook, and production-feedback
+  rules to the operations doctrine.
+- No breaking changes; all additions are backward compatible.
+
 ## 0.4.0 - 2026-07-09
 
 - Enriched the UI/UX doctrine with token architecture, theming, the interruption

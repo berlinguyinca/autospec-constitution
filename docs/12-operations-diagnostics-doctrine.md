@@ -32,6 +32,11 @@ diagnosis, Playwright reproductions, MCP-based diagnostics, and self-healing bou
 - Keep audit logs distinct from debug logs, with their own retention and access.
 - Never leak internal details (stack traces, subsystem names, raw messages) to users,
   and never log secrets or personal data.
+- Instrument new services with the three pillars (logs, metrics, traces); structured logs carry
+  a correlation id threaded end to end, the same id surfaced to users on failure.
+- Alert on SLOs and error budgets, not on every error; give operational procedures a runbook
+  with a rollback path.
+- Feed production signal (errors, RUM, incidents) back into the refinement backlog.
 
 ## Quality Gates
 
@@ -48,6 +53,9 @@ diagnosis, Playwright reproductions, MCP-based diagnostics, and self-healing bou
 - Real User Monitoring reports field performance for key interactions.
 - Alerts are objective-based and actionable; audit logs are separated; logs are
   scrubbed of secrets and personal data.
+- User-facing services define SLOs; alerting is SLO-based; health and synthetic checks feed a
+  status signal.
+- New operational procedures have a runbook; incidents produce a blameless postmortem.
 
 ## Required Metadata
 

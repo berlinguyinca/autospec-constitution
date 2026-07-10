@@ -1,6 +1,6 @@
 # Autospec Constitution
 
-Version: 0.4.0
+Version: 0.5.0
 
 This Constitution defines the engineering policy that Autospec-compatible systems should read,
 interpret, enforce, and evolve. It contains no implementation logic. It defines principles,
@@ -44,6 +44,7 @@ The Constitution is composed of doctrine chapters:
 15. Continuous Evolution Doctrine
 16. Maturity Model
 17. Governance and Versioning
+18. Financial Integrity Doctrine
 
 Each doctrine should define purpose, scope, rules, quality gates, required metadata, acceptance
 criteria, implementation hints, anti-patterns, and examples.
@@ -141,6 +142,21 @@ Governance should distinguish:
 - application changes in governed repositories
 
 Policy should not be silently changed by engine implementation work.
+
+**Stakes-proportional verification and independence.** The confidence required of a check
+should scale with the stakes of the change, and so should the independence of whoever signs
+off. As consequences grow (money, safety, irreversible or production-affecting actions,
+security boundaries, model promotion), quality assurance shifts away from model judgment toward
+deterministic, provable checks plus independent human review. The actor (human or agent) that
+produces a high-stakes change must never be the sole approver of it. This is one principle with
+domain-specific names: segregation of duties in financial work, independent held-out evaluation
+and model governance in machine learning, and independent approval for security-sensitive or
+irreversible operations. Domain baselines encode the concrete form; the engine records who
+verified what, and never lets a generator self-certify high-stakes work.
+
+Cross-reference: the shared generate/evaluate/refine method, its independent-critic and
+non-regression requirements, and the per-domain gate registries are described in the baselines
+repository's quality-method document; doctrines compose that method rather than restating it.
 
 ## 8. Versioning
 
