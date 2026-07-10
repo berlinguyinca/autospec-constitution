@@ -26,13 +26,10 @@ performance, and migration testing.
 - Automatically generated or refined UI is evaluated on two independent tracks:
   deterministic gates (accessibility, performance budgets, contrast, visual regression,
   interaction/state assertions) and an independent design critique.
-- The critic that judges generated UI is separate from the generator, anchored to a
-  fixed rubric; refinement must be non-regressive (never accept a change that lowered
-  any gate or rubric score). Deterministic gates outrank subjective judgment on conflict.
+- Critic independence, the non-regression ratchet, and deterministic-over-judgment
+  precedence for evaluating generated work follow the Review and Critique Doctrine (19).
 - Evaluate generated artifacts of any kind (code, UI, analyses, models) with the same loop:
   deterministic gates that block, plus an independent critic scoring a fixed rubric.
-- The system under evaluation never grades itself; the judge sees only the artifact, its brief,
-  and the rubric.
 - Prefer serial, deterministic test execution where shared state or side effects make
   concurrency unsafe; flakiness is a defect, not noise.
 
@@ -49,10 +46,9 @@ performance, and migration testing.
 - Critical flows have keyboard-operable end-to-end coverage.
 - Generated/refined UI has attached evidence: per-state and per-theme screenshots,
   deterministic gate results, and independent-critic rubric scores.
-- No accepted refinement regressed a prior gate or rubric dimension.
 - Evidence exists for each meaningful state/case, not just the happy path.
-- The independent-critic score and all deterministic gates are recorded; acceptance requires no
-  regression on either.
+- Critic scores and deterministic gate results are recorded as evidence; acceptance follows
+  the Review and Critique Doctrine's non-regression gates (19).
 
 ## Required Metadata
 

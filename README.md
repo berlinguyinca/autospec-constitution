@@ -49,7 +49,7 @@ Example:
 constitution:
   source: github
   repository: berlinguyinca/autospec-constitution
-  version: 0.6.0
+  version: 0.6.1
 
 profiles:
   - web
@@ -84,7 +84,8 @@ Autospec should be able to ask, "What standard applies?" before deciding, "How d
 
 ## Current Status
 
-Version `0.6.0` extends the initial policy draft (`0.1.0`) with design, UX, accessibility,
+Version `0.6.1` (a patch deduplicating review law into the Review
+and Critique Doctrine) extends the initial policy draft (`0.1.0`) with design, UX, accessibility,
 analytics-honesty, operations, embedded-assistant, security, testing, and onboarding
 enrichments (`0.4.0`); the domain-independent quality method, the Financial Integrity
 doctrine, and the stakes-proportional verification principle (`0.5.0`); and the Review &
