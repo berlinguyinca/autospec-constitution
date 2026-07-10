@@ -44,9 +44,9 @@ human review.
 
 ## Implementation Hints
 
-- This doctrine is the canonical home for review-and-critique law. The independence and
-  non-regression statements in the engineering and testing doctrines compose it; on any
-  divergence, this doctrine governs.
+- This doctrine is the canonical home for review-and-critique law. The engineering and
+  testing doctrines cross-reference it rather than restating it; on any divergence, this
+  doctrine governs.
 - Wire the independent critic and non-regression check into the generate/evaluate/refine loop
   described in the baselines quality-method document; do not let the generator grade itself.
 - Store the evidence bundle (scores, gate results, findings) alongside the change.
