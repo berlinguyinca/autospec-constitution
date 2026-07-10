@@ -20,8 +20,8 @@
   methodology-review rules to the analytics doctrine.
 - Added threat-model-before-build, ASVS mapping, and independent-approver rules to the
   security/privacy doctrine.
-- Added three-pillar instrumentation, SLO-based alerting, runbook, and production-feedback
-  rules to the operations doctrine.
+- Added runbook-with-rollback and production-signal-feedback rules and SLO/status-signal
+  gates to the operations doctrine.
 - No breaking changes; all additions are backward compatible.
 
 ## 0.4.0 - 2026-07-09

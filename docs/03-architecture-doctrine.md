@@ -30,8 +30,7 @@ data flows, ownership boundaries, and impact analysis.
 - New integrations appear in the integration map.
 - Deployment-affecting changes update deployment documentation.
 - Cross-boundary changes identify affected owners, tests, and rollback concerns.
-- Cross-boundary changes are justified by an ADR and identify affected owners, tests, and
-  rollback concerns.
+- Cross-boundary changes are justified by an ADR.
 - Structure is reviewed for simplicity; over-engineering is a rejectable finding, judged
   independently of the author.
 
