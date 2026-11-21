@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- CI: opt-in per-PR Opus agent review workflow (`.woodpecker/opus-review.yaml`); stays pending until the review host and secret are set up.
+
 ## 0.6.1 - 2026-07-10
 
 - Deduplicated review-and-critique law: the engineering and testing doctrines' free-standing
